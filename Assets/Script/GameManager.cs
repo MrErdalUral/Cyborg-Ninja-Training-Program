@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour {
 
 	public static GameManager Instance;
 
-	public GameState GameState;
+	public GameState GameState = GameState.PLAYING;
 
 	/// <summary>
 	/// Awake is called when the script instance is being loaded.
