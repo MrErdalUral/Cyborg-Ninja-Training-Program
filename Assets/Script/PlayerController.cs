@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (GameManager.Instance.GameState != GameState.PLAYING) return;
         var movingVector = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
         _rigidbody.velocity = movingVector * Speed;
     }
