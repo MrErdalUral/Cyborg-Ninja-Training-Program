@@ -8,7 +8,7 @@ public class StationaryEnemyController : MonoBehaviour
     
     public float Cooldown = 2.0f;
 
-    public float RandomWaitTime = 0.5f;
+    public float RandomWaitTime = 0.0f;
 
     private float _currentRandomWaitTime;
 
@@ -40,14 +40,14 @@ public class StationaryEnemyController : MonoBehaviour
             case EnemyState.DEAD:
             case EnemyState.STUNNED:
             default:
-                return;
+                break;
 
             case EnemyState.ALIVE:
                 if (Time.time > _lastShotTime + Cooldown + _currentRandomWaitTime)
                 {
                     Shoot();
                 }
-                return;
+                break;
         }
     }
 

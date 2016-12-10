@@ -1,14 +1,12 @@
 using UnityEngine;
 
-public class MovingEnemyController : MonoBehaviour
+public class MeleeEnemyController : MonoBehaviour
 {
     public EnemyState State;
 
     public GameObject Target;
 
     public float Speed;
-
-    public float RotationSpeed;
 
     private Rigidbody2D _rigidBody; 
 
@@ -44,9 +42,8 @@ public class MovingEnemyController : MonoBehaviour
         switch (State)
         {
             case EnemyState.STUNNED:
-                break;
-
             case EnemyState.DEAD:
+            default:
                 break;
 
             case EnemyState.ALIVE:
@@ -65,9 +62,6 @@ public class MovingEnemyController : MonoBehaviour
 
                 _rigidBody.velocity = new Vector2(x, y).normalized * Speed;
 
-                break;
-
-            default:
                 break;
         }
     } 
