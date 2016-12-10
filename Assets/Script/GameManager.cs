@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour {
 	/// </summary>
 	void Awake()
 	{
+		DontDestroyOnLoad(this);
+
 		if (Instance != this)
 		{
 			Destroy(Instance);
