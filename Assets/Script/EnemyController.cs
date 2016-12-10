@@ -2,14 +2,21 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    public EnemyState _state;
+    public EnemyState State;
+
+    public GameObject Target;
+
+    public float Speed;
+
+    private Rigidbody2D _rigidBody; 
 
     /// <summary>
     /// Awake is called when the script instance is being loaded.
     /// </summary>
     void Awake()
     {
-        _state = EnemyState.ALIVE;
+        State = EnemyState.ALIVE;
+        _rigidBody = GetComponent<Rigidbody2D>();
     }
 
     /// <summary>
@@ -33,11 +40,34 @@ public class EnemyController : MonoBehaviour
             return;
         }
 
-        switch (_state)
+        switch (State)
         {
-            
+            case EnemyState.STUNNED:
+                break;
+
+            case EnemyState.DEAD:
+                break;
+
+            case EnemyState.ALIVE:
+                var targetPosition = Target.transform.position;
+                var position = transform.position;
+                
+                var x = 
+                    (targetPosition.x < position.x) ? -1 :
+                    (targetPosition.x > position.x) ? 1 :
+                    0;
+
+                var y =
+                    (targetPosition.y < position.y) ? -1 :
+                    (targetPosition.y > position.y) ? 1 :
+                    0;  
+
+                _rigidBody.velocity = new Vector2(x, y).normalized * Speed;
+
+                break;
+
             default:
                 break;
         }
-    }
+    } 
 }
