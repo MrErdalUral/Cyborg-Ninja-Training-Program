@@ -2,15 +2,14 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-
-    private GameManager _gameManager;
+    public EnemyState _state;
 
     /// <summary>
     /// Awake is called when the script instance is being loaded.
     /// </summary>
     void Awake()
     {
-        _gameManager = GameManager.Instance;
+        _state = EnemyState.ALIVE;
     }
 
     /// <summary>
@@ -27,6 +26,18 @@ public class EnemyController : MonoBehaviour
     /// </summary>
     void Update()
     {
-        
+        var gameState = GameManager.Instance.GameState;
+
+        if (gameState != GameState.PLAYING)
+        {
+            return;
+        }
+
+        switch (_state)
+        {
+            
+            default:
+                break;
+        }
     }
 }
