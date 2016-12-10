@@ -1,12 +1,14 @@
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour
+public class MovingEnemyController : MonoBehaviour
 {
     public EnemyState State;
 
     public GameObject Target;
 
     public float Speed;
+
+    public float RotationSpeed;
 
     private Rigidbody2D _rigidBody; 
 
@@ -34,7 +36,6 @@ public class EnemyController : MonoBehaviour
     void Update()
     {
         var gameState = GameManager.Instance.GameState;
-
         if (gameState != GameState.PLAYING)
         {
             return;
