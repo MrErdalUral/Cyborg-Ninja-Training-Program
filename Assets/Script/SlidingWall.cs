@@ -10,7 +10,6 @@ public class SlidingWall : MonoBehaviour
     void Awake()
     {
         _animator = GetComponent<Animator>();
-        _animator.ResetTrigger("LevelEnd");
     }
 
     /// <summary>
@@ -19,9 +18,15 @@ public class SlidingWall : MonoBehaviour
     void Update()
     {
         var gameState = GameManager.Instance.GameState;
-        if (gameState == GameState.LEVEL_ENDED)
+        switch (gameState)
         {
-            _animator.SetTrigger("LevelEnd");
+            case GameState.LEVEL_START:
+                _animator.SetTrigger("Close");
+                break;
+                
+            case GameState.LEVEL_ENDED:
+                _animator.SetTrigger("Open");
+                break;
         }
     }
 }

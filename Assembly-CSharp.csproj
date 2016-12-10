@@ -53,6 +53,7 @@
      <Compile Include="Assets\Script\GameManager.cs" />
      <Compile Include="Assets\Script\GameState.cs" />
      <Compile Include="Assets\Script\Gate.cs" />
+     <Compile Include="Assets\Script\Health.cs" />
      <Compile Include="Assets\Script\HomingProjectile.cs" />
      <Compile Include="Assets\Script\LinearProjectile.cs" />
      <Compile Include="Assets\Script\MeleeEnemyController.cs" />
