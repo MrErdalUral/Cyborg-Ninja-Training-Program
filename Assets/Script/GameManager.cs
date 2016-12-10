@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour {
 
-	public GameManager Instance;
+	public static GameManager Instance;
 
-	private GameState _gameState = GameState.MENU;
+	public GameState GameState { get; private set; }
 
 	/// <summary>
 	/// Awake is called when the script instance is being loaded.
@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour {
 			Destroy(Instance);
 		}
 		Instance = this;
+		GameState = GameState.MENU;
 	}
 
 	// Use this for initialization
@@ -29,7 +30,7 @@ public class GameManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
 	{
-		switch (_gameState)
+		switch (GameState)
 		{
 			case GameState.MENU:
 

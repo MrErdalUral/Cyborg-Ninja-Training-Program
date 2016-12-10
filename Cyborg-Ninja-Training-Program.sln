@@ -1,7 +1,7 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2015
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cyborg-Ninja-Training-Program.CSharp", "Cyborg-Ninja-Training-Program.CSharp.csproj", "{B935BB77-2FF4-822B-0BCE-F7C402516C8B}"
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2008
+
+Project("{70FBFCF6-62DE-0A15-7044-011E1BCC25EE}") = "Cyborg-Ninja-Training-Program", "Assembly-CSharp.csproj", "{64ADFE4A-D0AF-C416-69F7-3AC75511F7D4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,12 +9,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B935BB77-2FF4-822B-0BCE-F7C402516C8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B935BB77-2FF4-822B-0BCE-F7C402516C8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B935BB77-2FF4-822B-0BCE-F7C402516C8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B935BB77-2FF4-822B-0BCE-F7C402516C8B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64ADFE4A-D0AF-C416-69F7-3AC75511F7D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64ADFE4A-D0AF-C416-69F7-3AC75511F7D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64ADFE4A-D0AF-C416-69F7-3AC75511F7D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64ADFE4A-D0AF-C416-69F7-3AC75511F7D4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
 	EndGlobalSection
 EndGlobal
