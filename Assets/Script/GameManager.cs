@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour {
 			Destroy(Instance);
 		}
 		Instance = this;
-		GameState = GameState.MENU;
+		GameState = GameState.PLAYING;
 	}
 
 	// Use this for initialization
