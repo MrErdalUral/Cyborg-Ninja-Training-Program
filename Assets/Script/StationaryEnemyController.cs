@@ -13,17 +13,14 @@ public class StationaryEnemyController : MonoBehaviour
 
     private float _currentRandomWaitTime;
 
-    private bool _canShoot;
     private float _lastShotTime;
 
-    private Rigidbody2D _rigidBody;
 
     /// <summary>
     /// Awake is called when the script instance is being loaded.
     /// </summary>
     void Awake()
     {
-        _rigidBody = GetComponent<Rigidbody2D>();
     }
 
     /// <summary>
@@ -54,12 +51,13 @@ public class StationaryEnemyController : MonoBehaviour
 
     void Shoot()
     {
+        if (Target == null) return;
         _lastShotTime = Time.time;
-        if(Target == null) return;
-        var instance = Instantiate(ProjectilePrefab, transform.position, Quaternion.identity) as GameObject;
+        _currentRandomWaitTime = Random.value * RandomWaitTime;
+        var instance = Instantiate(ProjectilePrefab, transform.position, Quaternion.identity);
         instance.transform.SetParent(transform);
         var projectile = instance.GetComponent<Projectile>();
+        projectile.Owner = gameObject;
         projectile.SetTarget(Target);
-        _currentRandomWaitTime = Random.value * RandomWaitTime;
     }
 }
