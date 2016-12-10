@@ -1,10 +1,10 @@
 using UnityEngine;
 
-public class LinearProjectile : MonoBehaviour, IProjectile
+public class LinearProjectile : Projectile
 {
     public float Speed;
 
-    public Vector2 MovementVector;
+    private Vector2 _movementVector;
 
     private Rigidbody2D _rigidBody;
 
@@ -26,10 +26,16 @@ public class LinearProjectile : MonoBehaviour, IProjectile
         switch (gameState)
         {
             case GameState.PLAYING:
-                _rigidBody.velocity = MovementVector.normalized * Speed;
+                _rigidBody.velocity = _movementVector * Speed;
                 break;
             default:
                 break;
         }
+    }
+
+    public override void SetTarget(Transform target)
+    {
+        Target = target;
+        _movementVector = (Target.position - transform.position).normalized;
     }
 }

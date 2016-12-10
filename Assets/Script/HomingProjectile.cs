@@ -1,10 +1,8 @@
 using UnityEngine;
 
-public class HomingProjectile : MonoBehaviour, IProjectile
+public class HomingProjectile : Projectile
 {
     public float Speed;
-
-    public GameObject Target;
 
     private Rigidbody2D _rigidBody;
 
@@ -32,5 +30,10 @@ public class HomingProjectile : MonoBehaviour, IProjectile
             default:
                 break;
         }
+    }
+
+    public override void SetTarget(Transform target)
+    {
+       Target = target;
     }
 }

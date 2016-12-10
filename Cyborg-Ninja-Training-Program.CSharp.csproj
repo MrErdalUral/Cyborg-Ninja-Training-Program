@@ -13,13 +13,11 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile>
-    </CompilerResponseFile>
+    <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneOSXIntel64:27</UnityBuildTarget>
     <UnityVersion>5.5.0f3</UnityVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <LangVersion Condition=" '$(VisualStudioVersion)' != '10.0' ">4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -85,12 +83,19 @@
   <ItemGroup>
     <Compile Include="Assets\Script\CameraController.cs" />
     <Compile Include="Assets\Script\CanvasController.cs" />
+    <Compile Include="Assets\Script\DestroyTimer.cs" />
     <Compile Include="Assets\Script\EnemyState.cs" />
     <Compile Include="Assets\Script\GameManager.cs" />
     <Compile Include="Assets\Script\GameState.cs" />
     <Compile Include="Assets\Script\Gate.cs" />
+    <Compile Include="Assets\Script\HomingProjectile.cs" />
+    <Compile Include="Assets\Script\LinearProjectile.cs" />
+    <Compile Include="Assets\Script\MeleeEnemyController.cs" />
     <Compile Include="Assets\Script\PlayerController.cs" />
+    <Compile Include="Assets\Script\Projectile.cs" />
+    <Compile Include="Assets\Script\RangedEnemyController.cs" />
     <Compile Include="Assets\Script\SortingOrderController.cs" />
+    <Compile Include="Assets\Script\StationaryEnemyController.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>

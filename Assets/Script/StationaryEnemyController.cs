@@ -4,7 +4,8 @@ public class StationaryEnemyController : MonoBehaviour
 {
     public EnemyState State;
 
-    public GameObject Target;
+    public Transform Target;
+    public GameObject ProjectilePrefab;
     
     public float Cooldown = 2.0f;
 
@@ -53,12 +54,12 @@ public class StationaryEnemyController : MonoBehaviour
 
     void Shoot()
     {
-        if (!_canShoot)
-        {
-            return;
-        }
-
         _lastShotTime = Time.time;
+        if(Target == null) return;
+        var instance = Instantiate(ProjectilePrefab, transform.position, Quaternion.identity) as GameObject;
+        instance.transform.SetParent(transform);
+        var projectile = instance.GetComponent<Projectile>();
+        projectile.SetTarget(Target);
         _currentRandomWaitTime = Random.value * RandomWaitTime;
     }
 }
