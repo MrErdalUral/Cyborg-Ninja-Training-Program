@@ -6,8 +6,10 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D _rigidbody;
     private Animator _animator;
     private Weapon _weapon;
+    public EnemyState State;
     void Awake()
     {
+        State = EnemyState.ALIVE;
         _rigidbody = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
         _weapon = GetComponentInChildren<Weapon>();
@@ -15,9 +17,11 @@ public class PlayerController : MonoBehaviour
     }
 
     void Update()
-    {
-		/*
+    {		
         if (GameManager.Instance.GameState != GameState.PLAYING) return;
+
+        if (GameManager.Instance.GameState != GameState.PLAYING || State != EnemyState.ALIVE) return;
+        
         var movingVector = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
         var mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         transform.localScale = new Vector3(Mathf.Sign(mousePosition.x - transform.position.x), 1, 1);
@@ -25,8 +29,6 @@ public class PlayerController : MonoBehaviour
 
         _animator.SetBool("Running", movingVector != Vector2.zero);
         _rigidbody.velocity = movingVector * Speed;
-*/
-
     }
 
     private void ControlWeapon(Vector3 mousePosition)
