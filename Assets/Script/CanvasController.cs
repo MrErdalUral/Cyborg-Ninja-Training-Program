@@ -6,7 +6,10 @@ using UnityEngine.UI;
 public class CanvasController : MonoBehaviour
 {
     public static CanvasController Instance;
-    public float LightsOffSpeed = 1f;
+
+    public float FadeOutRate = 1f;
+    public float FadeInRate = 1f;
+
     private Image _darknessPanel;
 
     // Use this for initialization
@@ -15,7 +18,7 @@ public class CanvasController : MonoBehaviour
         if(Instance != this)
             Destroy(Instance);
         Instance = this;
-        DontDestroyOnLoad(this);
+        // DontDestroyOnLoad(this);
         _darknessPanel = GameObject.Find("Darkness Panel").GetComponent<Image>();
     }
 
@@ -27,8 +30,8 @@ public class CanvasController : MonoBehaviour
             case GameState.LEVEL_ENDED:
                 {
                     var color = _darknessPanel.color;
-                    if (color.a >= 1) return;
-                    color.a += LightsOffSpeed * Time.deltaTime;
+                    if (color.a >= 1) break;
+                    color.a += FadeOutRate * Time.deltaTime;
                     _darknessPanel.color = color;
                 }
                 break;
@@ -36,19 +39,15 @@ public class CanvasController : MonoBehaviour
             case GameState.LEVEL_START:
                 {
                     var color = _darknessPanel.color;
-                    if(color.a <= 0) return;
-                    color.a -= LightsOffSpeed * Time.deltaTime;
+                    if(color.a <= 0)
+                    {
+                        GameManager.Instance.GameState = GameState.PLAYING;
+                        break;
+                    }
+                    color.a -= FadeInRate * Time.deltaTime;
                     _darknessPanel.color = color;
                 }
                 break;
-        }
-
-        if (GameManager.Instance.GameState == GameState.LEVEL_START)
-        {
-            var color = _darknessPanel.color;
-            if (color.a <= 0) {
-                GameManager.Instance.GameState = GameState.PLAYING;
-            }
         }
     }
 }

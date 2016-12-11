@@ -9,7 +9,7 @@ public class Health : MonoBehaviour
 
     public void Damage(int i)
     {
-        Hp-=i;
+        Hp--;
         if (Hp <= 0)
         {
             if (gameObject.tag == "Player")
@@ -17,7 +17,6 @@ public class Health : MonoBehaviour
                 if(GetComponent<PlayerController>().State == EnemyState.ALIVE)
                     GetComponent<Animator>().SetTrigger("Death");
                 GetComponent<PlayerController>().State = EnemyState.DEAD;
-                GetComponent<Rigidbody2D>().mass = 1000;
             }
             else
             {

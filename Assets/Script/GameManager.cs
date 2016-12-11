@@ -9,12 +9,6 @@ public class GameManager : MonoBehaviour {
 
 	public GameState GameState;
 
-	public Transform DoorLeft;
-
-	public Transform DoorRight;
-
-	public Transform Prof;
-
 	private bool _loading = false;
 
 	/// <summary>
@@ -22,14 +16,11 @@ public class GameManager : MonoBehaviour {
 	/// </summary>
 	void Awake()
 	{
-		DontDestroyOnLoad(this);
-
 		if (Instance != this)
 		{
 			Destroy(Instance);
 		}
 		Instance = this;
-		//GameState = GameState.LEVEL_START;
 	}
 
 	// Use this for initialization
@@ -74,21 +65,7 @@ public class GameManager : MonoBehaviour {
 			_loading = true;
 			Debug.Log("Randomizing level...");
 			
-			// var level = int.Parse(SceneManager.GetActiveScene().name.Substring(5)); // "scene1" -> 1
-			// var nextLevelName = string.Format("scene{0}", (level + 1));
-
-			// Debug.Log(_levelCount);
-			// Debug.Log("sceneCount: " + SceneManager.sceneCount);
-			// if (_levelCount == level)
-			// {
-			// 	return;
-			// }
-
-			// SceneManager.LoadScene(nextLevelName);
-		
-			DoorLeft.position = new Vector3(-4.5f, 6, 0);
-			DoorRight.position = new Vector3(4.5f, 6, 0);			
-			Prof.position = new Vector3(0, 7.5f, 0);
+			SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
 			GameState = GameState.LEVEL_START;
 			_loading = false;
