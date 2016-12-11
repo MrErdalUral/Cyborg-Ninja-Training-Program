@@ -26,7 +26,7 @@ public class StationaryEnemyController : MonoBehaviour
     /// <summary>
     /// Update is called every frame, if the MonoBehaviour is enabled.
     /// </summary>
-    void Update()
+    protected virtual void Update()
     {
         var gameState = GameManager.Instance.GameState;
         if (gameState != GameState.PLAYING) {
@@ -49,7 +49,7 @@ public class StationaryEnemyController : MonoBehaviour
         }
     }
 
-    void Shoot()
+    protected void Shoot()
     {
         if (Target == null) return;
         _lastShotTime = Time.time;
