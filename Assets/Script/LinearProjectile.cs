@@ -33,6 +33,10 @@ public class LinearProjectile : Projectile
         }
     }
 
+    public void SetAttackVector(Vector2 vector)
+    {
+        _movementVector = vector;
+    }
     public override void SetTarget(Transform target)
     {
         Target = target;

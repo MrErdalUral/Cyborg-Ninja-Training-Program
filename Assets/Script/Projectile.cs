@@ -15,8 +15,8 @@ public abstract class Projectile : MonoBehaviour
     {
         if(Owner == null || other.gameObject == Owner) return;
         var health = other.gameObject.GetComponent<Health>();
-        if (health != null)
-            health.Damage(1);
+        if(health==null) return;
+        health.Damage(1);
         Destroy(gameObject);
     }
 }
