@@ -7,6 +7,8 @@ public class Weapon : MonoBehaviour
     public GameObject AttackObjectPrefab;
     public float AttackCooldownTime = 1f;
     public float AttackForce = 10f;
+    
+    public int Damage = 2;
     private Vector3 _lookingVector;
     private float _cooldown;
     // Update is called once per frame
@@ -23,6 +25,8 @@ public class Weapon : MonoBehaviour
     private void ControlAttack()
     {
         _cooldown -= Time.deltaTime;
+        if (_cooldown <= -GetComponentInParent<PlayerController>().EnergyTime)
+            _cooldown = -GetComponentInParent<PlayerController>().EnergyTime+1;
         if (Input.GetMouseButtonDown(0) && _cooldown <= 0)
         {
             var mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -31,6 +35,7 @@ public class Weapon : MonoBehaviour
             var instance = Instantiate(AttackObjectPrefab, transform.position +(Vector3) lookingVector.normalized,
                 Quaternion.AngleAxis(angle, Vector3.forward));
             var projectileScript = instance.GetComponent<LinearProjectile>();
+            projectileScript.Damage = Damage;
             projectileScript.Owner = transform.parent.gameObject;
             projectileScript.SetAttackVector(lookingVector);
             var playerBody = GetComponentInParent<Rigidbody2D>();

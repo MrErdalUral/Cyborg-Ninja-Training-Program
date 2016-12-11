@@ -17,6 +17,11 @@ public abstract class Projectile : MonoBehaviour
         var health = other.gameObject.GetComponent<Health>();
         if(health==null) return;
         health.Damage(1);
+        var body = other.gameObject.GetComponent<Rigidbody2D>();
+        if (body != null)
+        {
+            body.AddForce((Vector2)(other.transform.position - transform.position) * 50000);
+        }
         Destroy(gameObject);
     }
 }
