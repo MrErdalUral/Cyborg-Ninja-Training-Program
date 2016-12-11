@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
 
@@ -49,5 +50,12 @@ public class GameManager : MonoBehaviour {
 			default:
 				return;
 		}
+	}
+
+	void nextLevel()
+	{
+		var parts = SceneManager.GetActiveScene().name.Split('.');
+		var nextLevelName = parts[0] + int.Parse(parts[1]);
+		SceneManager.LoadScene(nextLevelName);
 	}
 }
