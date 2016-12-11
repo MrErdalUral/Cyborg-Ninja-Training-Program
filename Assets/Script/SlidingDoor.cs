@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SlidingWall : MonoBehaviour
+public class SlidingDoor : MonoBehaviour
 {
     private Animator _animator;
 

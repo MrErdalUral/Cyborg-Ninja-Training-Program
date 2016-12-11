@@ -51,11 +51,17 @@ public class StationaryEnemyController : MonoBehaviour
 
     protected void Shoot()
     {
-        if (Target == null) return;
+        if (Target == null || (Target).GetComponent<PlayerController>().State == EnemyState.DEAD)
+        {
+            return;
+        }
+
         _lastShotTime = Time.time;
         _currentRandomWaitTime = Random.value * RandomWaitTime;
+
         var instance = Instantiate(ProjectilePrefab, transform.position, Quaternion.identity);
         instance.transform.SetParent(transform);
+        
         var projectile = instance.GetComponent<Projectile>();
         projectile.Owner = gameObject;
         projectile.SetTarget(Target);

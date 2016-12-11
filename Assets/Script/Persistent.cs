@@ -7,6 +7,6 @@ public class Persistent : MonoBehaviour
     /// </summary>
     void Awake()
     {
-        DontDestroyOnLoad(this);
+        // DontDestroyOnLoad(this);
     }
 }

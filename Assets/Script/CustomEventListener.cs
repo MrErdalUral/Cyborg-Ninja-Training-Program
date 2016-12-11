@@ -9,4 +9,12 @@ public class CustomEventListener : MonoBehaviour
             GameManager.Instance.GameState = GameState.INIT_NEXT_LEVEL;
         }
     }
+
+    public void PlayerDieEndEvent()
+    {
+        if (GameManager.Instance.GameState == GameState.PLAYING)
+        {
+            GameManager.Instance.GameState = GameState.LEVEL_ENDED;
+        }
+    }
 }

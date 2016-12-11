@@ -7,28 +7,30 @@ public class PlayerController : MonoBehaviour
     private Animator _animator;
     private Weapon _weapon;
     public EnemyState State;
-    public float EnergyTime = 1f;
     void Awake()
     {
         State = EnemyState.ALIVE;
+        
         _rigidbody = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
         _weapon = GetComponentInChildren<Weapon>();
-        DontDestroyOnLoad(this);
+
+        // DontDestroyOnLoad(this);
     }
 
     void Update()
-    {
+    {		
+        if (GameManager.Instance.GameState != GameState.PLAYING) return;
+
         if (GameManager.Instance.GameState != GameState.PLAYING || State != EnemyState.ALIVE) return;
+        
         var movingVector = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
         var mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         transform.localScale = new Vector3(Mathf.Sign(mousePosition.x - transform.position.x), 1, 1);
         ControlWeapon(mousePosition);
 
         _animator.SetBool("Running", movingVector != Vector2.zero);
-        _rigidbody.velocity += movingVector * Speed;
-        if (_rigidbody.velocity.magnitude >= Speed)
-            _rigidbody.velocity = _rigidbody.velocity.normalized*Speed;
+        _rigidbody.velocity = movingVector * Speed;
     }
 
     private void ControlWeapon(Vector3 mousePosition)

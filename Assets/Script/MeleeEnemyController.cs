@@ -59,10 +59,6 @@ public class MeleeEnemyController : MonoBehaviour
                     (targetPosition.y < position.y) ? -1 :
                     (targetPosition.y > position.y) ? 1 :
                     0;  
-                if(x<0)
-                    transform.localScale = new Vector3(-1,1,1);
-                else
-                    transform.localScale = new Vector3(1, 1, 1);
 
                 _rigidBody.velocity = new Vector2(x, y).normalized * Speed;
 
