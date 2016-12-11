@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+		/*
         if (GameManager.Instance.GameState != GameState.PLAYING) return;
         var mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         transform.localScale = new Vector3(Mathf.Sign(mousePosition.x - transform.position.x), 1, 1);
@@ -27,6 +28,7 @@ public class PlayerController : MonoBehaviour
 
         _animator.SetBool("Running", movingVector != Vector2.zero);
         _rigidbody.velocity = movingVector * Speed;
+*/
 
     }
 }

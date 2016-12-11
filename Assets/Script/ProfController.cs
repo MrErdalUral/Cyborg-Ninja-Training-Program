@@ -9,6 +9,8 @@ public class ProfController : MonoBehaviour
     /// </summary>
     void Awake()
     {
+        DontDestroyOnLoad(this);
+        
         _animator = GetComponent<Animator>();
     }
 
@@ -24,10 +26,10 @@ public class ProfController : MonoBehaviour
                 _animator.SetTrigger("EnterRoom");
                 break;
 
-            case GameState.LEVEL_START:
-                _animator.SetTrigger("ExitRoom");
-                break;
-                
+            // case GameState.LEVEL_START:
+            //     _animator.SetTrigger("ExitRoom");
+            //     break;
+
             default:
                 break;
         }
