@@ -32,6 +32,7 @@ public class CanvasController : MonoBehaviour
                     _darknessPanel.color = color;
                 }
                 break;
+                
             case GameState.LEVEL_START:
                 {
                     var color = _darknessPanel.color;
@@ -40,6 +41,14 @@ public class CanvasController : MonoBehaviour
                     _darknessPanel.color = color;
                 }
                 break;
+        }
+
+        if (GameManager.Instance.GameState == GameState.LEVEL_START)
+        {
+            var color = _darknessPanel.color;
+            if (color.a <= 0) {
+                GameManager.Instance.GameState = GameState.PLAYING;
+            }
         }
     }
 }

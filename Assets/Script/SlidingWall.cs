@@ -20,9 +20,9 @@ public class SlidingWall : MonoBehaviour
         var gameState = GameManager.Instance.GameState;
         switch (gameState)
         {
-            case GameState.LEVEL_START:
-                _animator.SetTrigger("Close");
-                break;
+            // case GameState.LEVEL_START:
+            //     _animator.SetTrigger("Close");
+            //     break;
                 
             case GameState.LEVEL_ENDED:
                 _animator.SetTrigger("Open");
