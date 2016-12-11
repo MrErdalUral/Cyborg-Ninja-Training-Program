@@ -55,7 +55,7 @@ public class Weapon : MonoBehaviour
         else
         {
             _lookingVector = new Vector3(_lookingVector.x,-_lookingVector.y,0);
-            transform.localScale = new Vector3(1, 1, 1);
+            transform.localScale = new Vector3(1, -1, 1);
         }
         var angle = Mathf.Atan2(_lookingVector.y, _lookingVector.x) * Mathf.Rad2Deg;
         transform.localRotation = Quaternion.AngleAxis(angle, Vector3.forward);
